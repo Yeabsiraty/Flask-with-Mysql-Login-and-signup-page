@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            {%if show == False%}
+            <li><button><a href="{{url_for('login')}}">Login</a></button></li>
+            <li><button><a href="{{url_for('signup')}}">Signup</a></button></li>
+            {%else%}
+            <li>hello {{session["F_name"]}}</li>
+            <li><button  onclick="return confirmLogout()"><a href="{{url_for('logout')}}">Logout</a></button></li>
+            {%endif%}
+
+            
+        </ul>
+    </div><br>
+    {%with messages=get_flashed_messages(with_categories=True)%}
+{%if messages%}
+    {%for category,message in messages%}
+    
+        {%if category=="success"%}
+            <span id="errors" class="alert alert_ses" style="font-size: 20px;color:green;background-color: greenyellow;">{{message}} <button class="close" onclick="closeMessage(this)">X</button></span>
+        {%endif%}
+        {%if category=="error"%}
+            <span id="errors" class="alert alert_err" style=" font-size: 20px;color:rgb(255, 255, 255);background-color: rgb(255, 129, 129);">{{message}}<button class="close" onclick="closeMessage(this)">X</button></span>
+        {%endif%}
+
+    {%endfor%}
+{%endif%}
+{%endwith%}<br>
+</body>
+
+</html>
+
+{%block content%}
+{%endblock%}
+
+
+<script>
+    function closeMessage(button) {
+        var x = button.parentElement;
+        x.style.display = "none";
+    }
+    function confirmLogout() {
+            return window.confirm("Are you sure you want to log out?");
+        }
+    </script>
+    

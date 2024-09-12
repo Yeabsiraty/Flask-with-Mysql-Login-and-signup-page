@@ -1,0 +1,27 @@
+{% extends 'forall.html' %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sig">
+    <form novalidate action="" method="post" class="signup_form">
+        {{form.csrf_token}}
+        {{ form.hidden_tag() }}
+        {%import "macro.html" as mac%}
+       <span class="s_labels"> {{mac.render_field(form.f_name)}}</span><br><br>
+       <span class="s_labels"> {{mac.render_field(form.l_name)}}</span><br><br>
+       <span class="s_labels"> {{mac.render_field(form.email)}}</span><br><br>
+       <span class="s_labels"> {{mac.render_field(form.phone)}} </span><br><br>
+       <span class="s_labels"> {{mac.render_field(form.password)}}</span><br><br>
+       <span class="s_labels"> {{mac.render_field(form.c_pass)}}</span><br><br>
+        <input type="submit" name="" id="signup" placeholder="Signup"><br><br>
+    </form></div>
+</body>
+</html>
+{%endblock%}
