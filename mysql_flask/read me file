@@ -1,0 +1,11 @@
+--- mysql code ---
+create database test;
+
+create table user(
+	Id int primary key auto_increment,
+	F_name varchar(20) not null,
+    L_name varchar(20) not null,
+    email varchar(20) not null unique,
+    phone_no int not null unique,
+    pass_key varchar(20) not null
+);
